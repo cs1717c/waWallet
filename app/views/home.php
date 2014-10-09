@@ -50,56 +50,74 @@
 
             <div class="col-md-3">
                 <h3>Wallets</h3>
-					<div class="form-group">
-						<button class="btn btn-default" ng-click="selectPage('create-wallet')">Add</button>
-						<button class="btn btn-default" ng-click="selectPage('edit-wallet')">Edit</button>
-						<button class="btn btn-default">Delete</button>
-					</div>
+				<div class="form-group">
+					<button class="btn btn-default" ng-click="selectPage('create-wallet')">Add</button>
+					<button class="btn btn-default" ng-click="selectPage('edit-wallet')">Edit</button>
+					<button class="btn btn-default">Delete</button>
+				</div> <! -- end wallet toolbar -->
 
-			<div class="list-group">
+				<div class="list-group">
                     <a href="#" class="list-group-item" ng-click="selectWallet(0)">Wallet 1</a>
-                </div>
-            </div>
+                </div> <!-- end wallet list -->
+            </div> <! -- end sidebar -->
 			
 			<div class="col-md-6" id="edit-wallet" ng-if="model.currentPage == 'create-wallet' || model.currentPage == 'edit-wallet'">
-			<h2 ng-if="model.currentPage == 'edit-wallet'">Edit wallet</h2>
-			<h2 ng-if="model.currentPage == 'create-wallet'">Create wallet</h2>
-            <div class="form-group">
-			<form id="edit-wallet" role="form">
-			<div class="form-group">
-			<label for="name">Name</label><input type="text" name="name" id="name" class="form-control">
-			</div>
-			<div class="form-group">
-			<label for="currency">Currency</label><select name="currency" id="currency" class="form-control"></select>
-			</div>
-			<button type="submit" class="btn btn-default">Add</button>
-			</div>
-			</form>
-			</div>
+				<h2 ng-if="model.currentPage == 'edit-wallet'">Edit wallet</h2>
+				<h2 ng-if="model.currentPage == 'create-wallet'">Create wallet</h2>
+				<form id="edit-wallet" role="form">
+					<div class="form-group">
+						<label for="name">Name</label><input type="text" name="name" id="name" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="currency">Currency</label><select name="currency" id="currency" class="form-control"></select>
+					</div>
+					<button type="submit" class="btn btn-default">Add</button>
+				</form>
+			</div> <!-- end edit wallet -->
 
             <div class="col-md-9" id="view-wallet" ng-if="model.currentPage == 'view-wallet'">
-			<h2>Your wallet</h2>
-			<h3>Wallet Name</h3>
-			<p>
-			<strong>Balance: </strong>&pound; X.XX<br/>
-			<strong>Currency: </strong>X
-			</p>
+				<h2>Your wallet</h2>
+				<div class="row"><div class="col-md-6">
+					<h3>Wallet Name</h3>
+					<p>
+					<strong>Balance: </strong>&pound; X.XX<br/>
+					<strong>Currency: </strong>X
+					</p>
+				</div></div> <!-- end wallet info row/col" -->
+				
+				<div class="row"><div class="col-md-4">
+					<div class="panel">
+						<h3>Add Transaction</h3>
+						<form id="transaction-form">
+						<div class="form-group">
+							<label for="amount">Amount</label>
+							<input class="form-control" name="amount">
+							<button type=-"submit" class="btn btn-default">Credit</button>
+							<button type=-"submit" class="btn btn-default">Debit</button>
+						</div> <!-- end form group -->
+					</div> <!--end add transaction panel -->
+				</div></div> <!-- close add transaction row/col -->
 			
-			<h3>Transactions</h3>
-			<table class="table table-striped table-bordered">
-			<tr>
-			<th>Transaction ID</th>
-			<th>Amount</th>
-			<th>Date</th>
-			</tr>
-			<tr>
-			<td>1</td>
-			<td>&pound;10.00</td>
-			<td>Oct 09, 2014 07:01</td>
-			</table>
-            </div>
+				<div class="row"><div class="col-md-9">
 
-        </div>
+					<h3>Transactions</h3>
+					<table class="table table-striped table-bordered">
+						<tr>
+							<th>Transaction ID</th>
+							<th>Amount</th>
+							<th>Date</th>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>&pound;10.00</td>
+							<td>Oct 09, 2014 07:01</td>
+						</tr>
+					</table>
+				</div></div> <!-- close transactions row/col -->
+			
+            </div> <!-- close view wallet -->
+
+        </div> <!--- close main container -->
 
     </div>
     <!-- /.container -->
