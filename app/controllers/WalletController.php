@@ -10,12 +10,35 @@ class WalletController extends BaseController
 
     public function getWallet($wallet)
     {
-        return Wallet::find($wallet)->toJson();
+		$wallet = Wallet::find($wallet);
+		$walletArr = $wallet->toArray();
+		
+		$transactions = WalletTransaction::where('wallet', $wallet->id)->get();
+		$walletArr['transactions'] = $transactions->toArray();
+		
+		$balance = 0;
+		foreach ($transactions as $transaction)
+			$balance += $transaction["amount"];
+			
+		$walletArr["balance"] = number_format($balance,2);
+		
+        return json_encode($walletArr);
     }
 
     public function editWallet($wallet)
     {
-        return Wallet::find($wallet)->toJson();
+		$input = Input::json();
+		
+        $wallet = Wallet::find($wallet);
+	
+		if  (Input::has('name'))
+			$wallet->name = $input->get('name');
+			
+		if  (Input::has('name'))
+			$wallet->currency = $input->get('currency');
+     
+        $wallet->save();
+        return $wallet->toJson();
     }
 	
     public function addWallet()
@@ -29,5 +52,12 @@ class WalletController extends BaseController
         $wallet->save();
         return $wallet->toJson();
     }
+	
+	public function deleteWallet()
+	{
+		$wallet = Wallet::find(Input::get('id'));
+		$wallet->delete();
+		return $wallet->toJson();
+	}
 
 }

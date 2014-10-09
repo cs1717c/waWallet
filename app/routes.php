@@ -18,14 +18,19 @@ Route::get('/', function()
 
 
 //WALLET CALLS
+Route::post('/wallets', 'WalletController@addWallet');
 Route::get('/wallets', 'WalletController@getWallets'); 
 Route::get('/wallets/{wallet}', 'WalletController@getWallet');
-Route::post('/wallets/{wallet}', 'WalletController@editWallet');
-Route::put('/wallets', 'WalletController@addWallet');
+Route::put('/wallets/{wallet}', 'WalletController@editWallet');
+Route::delete('/wallets', 'WalletController@deleteWallet');
 
+//CURRENCY CALLS
+Route::get('/currencies', 'CurrencyController@getCurrencies'); 
+Route::get('/currencies/{currency}', 'CurrencyController@getCurrency');
 
 //TRANSACTION CALLS
+Route::get('/wallets/transactions', 'WalletTransactionController@getAllTransactions');
+Route::post('/wallets/{wallet}/transactions', 'WalletTransactionController@addWalletTransaction');
 Route::get('/wallets/{wallet}/transactions', 'WalletTransactionController@getWalletTransactions');
 Route::get('/wallets/{wallet}/transactions/{transaction}', 'WalletTransactionController@getWalletTransaction');
-Route::post('/wallets/{wallet}/transactions', 'WalletController@editWalletTransaction');
-Route::put('/wallets/{wallet}/transactions', 'WalletController@addWalletTransaction');
+Route::put('/wallets/{wallet}/transactions/{transaction}', 'WalletController@editWalletTransaction');
