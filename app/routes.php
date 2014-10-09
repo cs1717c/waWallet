@@ -18,7 +18,14 @@ Route::get('/', function()
 
 
 //WALLET CALLS
-Route::get('/wallet', 'WalletController@getWallets'); 
-Route::get('/wallet/{id}', 'WalletController@getWallet');
-Route::post('/wallet/{id}', 'WalletController@editWallet');
-Route::put('/wallet', 'WalletController@addWallet');
+Route::get('/wallets', 'WalletController@getWallets'); 
+Route::get('/wallets/{wallet}', 'WalletController@getWallet');
+Route::post('/wallets/{wallet}', 'WalletController@editWallet');
+Route::put('/wallets', 'WalletController@addWallet');
+
+
+//TRANSACTION CALLS
+Route::get('/wallets/{wallet}/transactions', 'WalletTransactionController@getWalletTransactions');
+Route::get('/wallets/{wallet}/transactions/{transaction}', 'WalletTransactionController@getWalletTransaction');
+Route::post('/wallets/{wallet}/transactions', 'WalletController@editWalletTransaction');
+Route::put('/wallets/{wallet}/transactions', 'WalletController@addWalletTransaction');

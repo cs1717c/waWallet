@@ -1,6 +1,6 @@
 <?php
 
 
-class Deal extends Eloquent {
+class Wallet extends Eloquent {
 
 } 

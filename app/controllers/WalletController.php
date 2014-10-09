@@ -8,14 +8,14 @@ class WalletController extends BaseController
         return Wallet::all()->toJson();
     }
 
-    public function getWallet($id)
+    public function getWallet($wallet)
     {
-        return Wallet::find($id)->toJson();
+        return Wallet::find($wallet)->toJson();
     }
 
-    public function editWallet($id)
+    public function editWallet($wallet)
     {
-        return Wallet::find($id)->toJson();
+        return Wallet::find($wallet)->toJson();
     }
 	
     public function addWallet()
