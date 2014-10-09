@@ -1,30 +1,24 @@
-var fruglApp = angular.module('fruglApp', ['ngCookies', 'ngResource']);
+var walletApp = angular.module('walletApp', []);
 
-fruglApp.controller('appController', function($scope, $cookies, $resource, $http, $timeout) {
+walletApp.controller('appController', function($scope) {
 	
 	$scope.model = {
-		"currentPage" : "browse",
-
-		"currentUser" : {
-			"cart" : {}
-		},
-		
-		
+		"currentPage" : "create-wallet",
+		"selectedWallet" : 0
 	}; 
 
 	
 	$scope.init = function () {
-
+	
 	}
 	
-	$scope.onClickPage = function (page) {
+	$scope.selectWallet = function (walletId) {
+		$scope.selectedWallet = walletId;
+		$scope.model.currentPage = "view-wallet";
+	}
+	
+	$scope.selectPage = function (page) {
 		$scope.model.currentPage = page;
-	}
-	
-	function getRefParam(ref, param)
-	{
-		ref = ref.split("/");
-		return ref[param];
 	}
   });
 
